@@ -35,7 +35,7 @@
                     @else
                         <!-- Dropdown Trigger -->
                           <a class='dropdown-button btn light-primary-color' href='#' data-activates='dropdown1'>
-                              <i class="material-icons left">account_circle</i>{{ Auth::user()->name }}
+                              <i class=" material-icons right">account_circle</i>{{ Auth::user()->name }}
                           </a>
                     
                       <!-- Dropdown Structure -->

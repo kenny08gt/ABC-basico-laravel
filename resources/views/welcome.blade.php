@@ -1,19 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+@extends('layouts.app')
 
-  <!-- Compiled and minified JavaScript -->
-        
-          
-
-    </head>
-    <body>
-        @include('common.errors')
-        
-                  <div class="parallax-container">
+@section('content')
+<div class="parallax-container">
                     <div class="parallax"><img src="images/image1.jpg"></div>
                   </div>
                  <div class="section white">
@@ -39,4 +27,4 @@
             window.location.replace("usuario");
         });
     </script>
-</html>
+@endsection

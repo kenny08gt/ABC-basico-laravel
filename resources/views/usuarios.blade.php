@@ -4,6 +4,7 @@
 
 
  @include('common.errors')
+ <div class="container">
 <h3 class="heading">Agregar usuario</h3>
   <div class="row">
     <form  action="{{ url('crear_user') }}" method="POST" class="col s12">
@@ -86,10 +87,11 @@
         
   </ul>
   </div>
+  </div>
   @endsection
   
   @section('scripts')
-  <script type="text/javascript">
+  
       function habilitar_cambios($id){
           console.log("Habilitar cambios "+$id);
           document.getElementById('dpi'+$id).disabled = false;
@@ -100,5 +102,4 @@
           $('#nombre'+$id).prop('disabled', false);
           $('#role'+$id).prop('disabled', false);*/
       }
-  </script>
   @endsection

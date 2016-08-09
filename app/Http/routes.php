@@ -12,43 +12,20 @@
 */
 use App\Usuario;
 use Illuminate\Http\Request;
+
+Route::auth();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/usuario', function (Request $request) {
-    //
-    $usuarios = Usuario::orderBy('created_at', 'asc')->get();
-    return view('usuarios', [
-        'usuarios' => $usuarios
-    ]);
-});
+Route::get('/usuario','UsuarioController@index');
 
-Route::post('/crear_user', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'nombre' => 'required|max:255',
-    ]);
+Route::post('/crear_user', 'UsuarioController@store');
 
-     if ($validator->fails()) {
-        return redirect('/errors')
-            ->withInput()
-            ->withErrors($validator);
-    }
+Route::delete('/usuario/{usuario}','UsuarioController@delete');
 
-    $usuario=new usuario;
-    $usuario->dpi=$request->dpi;
-    $usuario->nombre=$request->nombre;
-    $usuario->role=$request->role;
-    $usuario->save();
-    
 
-    return redirect('https://ias1a-ingeusac.c9users.io/Management/public/usuario');
-});
-Route::delete('/usuario/{usuario}', function (usuario $usuario) {
-    $usuario->delete();
-
-    return redirect('https://ias1a-ingeusac.c9users.io/Management/public/usuario');
-});
 Route::post('/usuario_edit/{id}', function ($id,Request $request) {
     file_put_contents('./log/log.txt', $id, FILE_APPEND);
     //$log=$usuario->nombre."-".$usuario->dpi."-".$usuario->role.date("j.n.Y")."\n";
@@ -71,4 +48,15 @@ Route::post('/usuario_edit/{id}', function ($id,Request $request) {
     
 
     return redirect('https://ias1a-ingeusac.c9users.io/Management/public/usuario');
+});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/admin/asignarCursos',function(Request $request){
+    $cursos = App\Curso::orderBy('codigo', 'asc')->get();
+        return view('admin/ac', [
+            'cursos' => $cursos
+        ]);
 });

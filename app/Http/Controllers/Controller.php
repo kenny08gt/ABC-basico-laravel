@@ -1,4 +1,4 @@
-php artisan make:migration create_tasks_table --create=tasks<?php
+<?php
 
 namespace App\Http\Controllers;
 
